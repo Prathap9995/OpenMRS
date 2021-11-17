@@ -4,7 +4,7 @@ Feature: OpenMRS application functionalties
   Background: Login functionalities
   Given Navigate to "https://demo.openmrs.org/openmrs/login.htm"
   
-
+@Login
   Scenario Outline: Login Feature
     Given Try to Login using <Email> and <Password> 
     And Select the proper Location
@@ -15,6 +15,14 @@ Feature: OpenMRS application functionalties
    		| Email	| password|
    		| Admin			| Admin123|
    		| Prathap		| P123		|
+@Customer
+	Scenario: To Fetch customer details
+	Given Login using "Admin" and "Admin123" 
+	When Click on find a patient 
+	And Search using Keyword "Adam"
+	And select a Patient with name "Donna Adams"
+	Then Get the contact information and take a screenshot
+	And Click on logout and close the browser
 
   #@tag2
   #Scenario Outline: Title of your scenario outline
